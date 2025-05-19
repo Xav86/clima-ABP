@@ -2,14 +2,11 @@
 A necessidade de obter uma previsão climática num dado local durante um ou mais dias é algo que vai além de iniciar uma conversa. 
 
 Sem esse serviço, planejamentos pessoais no cotidiano são frustados, acidentes em voos e na navegação aumentam, a indústria e o comércio - como os do ramo turístico - são prejudicados, safras de agricultores são perdidas e eventos climáticos extremos ocorrem sem preparo de autoridades governamentais.
-<<<<<<< HEAD
-=======
 
 O contexto para o desenvolvimento inicial deste projeto se deu em meio a um projeto de Hardware, onde o intuito era construir totens interativos para serem instalados na SATC, a fim de ficarem disponíveis aos alunos e comunidade.
 
 Com o advento das recentes leis de proibição ao uso de smarthphones, fica evidente a necessidade de novos meios informativos aos alunos integrantes da instituição.
 
->>>>>>> 0e64aba2cea3c1eeb542965b187622796f9056f7
 ## Solução
 Uma resolução comum para esse problema é uma aplicação - seja ela mobile, desktop ou web, por exemplo - que ofereça informações de previsões meteorológicas de um determinado local obtidas de satélites, radares e estações de meteorologia.
 
