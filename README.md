@@ -12,6 +12,7 @@ Devido ao projeto ser para uma matéria focada em desenvolver interfaces para se
 <!--
 Adicionar um parágrafo com funcionalidades do sistema me parece bom
 -->
+
 ### Ferramentas
 Dentre nossas principais ferramentas para o projeto estão o framework **Vue.js**, para fornecer uma organização e funções que auxiliam na construção das páginas Web, a API (Application Programming Interface) **Visual Crossing**, responsável por oferecer dados das previsões climáticas, além do gerenciador de versionamento **Git** somado a plataforma **GitHub** para registrar alterações no projeto e possibilitar o trabalho em grupo.
 
@@ -21,8 +22,6 @@ Dentre nossas principais ferramentas para o projeto estão o framework **Vue.js*
 <!--
 É necessário alterar levemente o protótipo atual para a apresentação. Preciso o quanto antes aperfeiçoar a interface
 -->
-
-
 
 ## Veja mais sobre
 
