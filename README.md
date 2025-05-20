@@ -14,10 +14,16 @@ Adicionar um parágrafo com funcionalidades do sistema me parece bom
 -->
 ### Ferramentas
 Dentre nossas principais ferramentas para o projeto estão o framework **Vue.js**, para fornecer uma organização e funções que auxiliam na construção das páginas Web, a API (Application Programming Interface) **Visual Crossing**, responsável por oferecer dados das previsões climáticas, além do gerenciador de versionamento **Git** somado a plataforma **GitHub** para registrar alterações no projeto e possibilitar o trabalho em grupo.
+
+**_Exemplo:_** retorno da API Visual Crossing: [exemplo-visualcrossing][exemplo-visualcrossing]
+
 ## Prototipagem
 <!--
 É necessário alterar levemente o protótipo atual para a apresentação. Preciso o quanto antes aperfeiçoar a interface
 -->
+
+
+
 ## Veja mais sobre
 
 AMAZON. **O que é uma API? – Explicação sobre interfaces de programação de aplicações – AWS**. Disponível em: [https://aws.amazon.com/pt/what-is/api/#:~:text=API%20significa%20Application%20Programming%20Interface,de%20serviço%20entre%20duas%20aplicações](https://aws.amazon.com/pt/what-is/api/#:~:text=API%20significa%20Application%20Programming%20Interface,de%20serviço%20entre%20duas%20aplicações).
@@ -31,3 +37,9 @@ GAZETA DO POVO. **Vai chover? A importância social e científica da previsão d
 VISUAL CROSSING. **Timeline Weather API**. 6 fev. 2025. Disponível em: [https://www.visualcrossing.com/resources/documentation/weather-api/timeline-weather-api/](https://www.visualcrossing.com/resources/documentation/weather-api/timeline-weather-api/).
 
 VUE.JS. **Vue.js**. Disponível em: [https://vuejs.org/guide/introduction.html](https://vuejs.org/guide/introduction.html).
+
+<!--
+Variáveis: links
+-->
+
+[exemplo-visualcrossing]: ./exemplos/retorno-api-visualcrossing.json "exemplo-visualcrossing"
