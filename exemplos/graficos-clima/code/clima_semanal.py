@@ -55,7 +55,7 @@ df = pd.DataFrame([{
 def plot_variavel(nome_coluna, titulo, unidade, cor_max, cor_med, cor_min, cor_linha, nome_arquivo):
     resumo = df[nome_coluna].agg(['min', 'mean', 'max'])
 
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(8.7, 3.5))
     plt.plot(df["Data"], df[nome_coluna], marker='o', color=cor_linha, label=f'{nome_coluna} diário')
     plt.axhline(resumo["max"], linestyle='--', color=cor_max, label='Máximo')
     plt.axhline(resumo["mean"], linestyle='-', color=cor_med, label='Médio')
@@ -82,11 +82,11 @@ plot_variavel("Chance de Precipitação (%)", "Chance de precipitação durante 
 plot_variavel("Neve (mm)","Neve prevista durante a semana - Criciúma, SC", "Neve (mm)", "#adb5bd", "#ced4da", "#dee2e6", "black","grafico-neve.png")
 
 # Gráfico do sol
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(8.7, 3.5))
 plt.plot(df["Data"], df["Nascer do Sol"], marker='o', color='orange', label='Nascer do Sol')
 plt.plot(df["Data"], df["Pôr do Sol"], marker='o', color='darkred', label='Pôr do Sol')
 
-y_ticks = range(int(df["Nascer do Sol"].min()) - 15, int(df["Pôr do Sol"].max()) + 15, 30)
+y_ticks = range(int(df["Nascer do Sol"].min()) - 15, int(df["Pôr do Sol"].max()) + 15, 60)
 y_labels = [minutos_para_hora_str(m) for m in y_ticks]
 plt.yticks(ticks=y_ticks, labels=y_labels)
 
@@ -101,7 +101,7 @@ plt.savefig(f"{caminho_path}/grafico-sol.png")
 plt.close()
 
 # Gráfico da Lua
-plt.figure(figsize=(10, 5))
+plt.figure(figsize=(8.7, 3.5))
 plt.plot(df["Data"], df["Fase da Lua"], marker='o', color='purple')
 plt.ylim(-0.1, 1.1)
 plt.yticks([0.0, 0.25, 0.5, 0.75, 1.0],

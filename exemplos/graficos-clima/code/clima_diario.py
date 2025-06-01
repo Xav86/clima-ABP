@@ -34,7 +34,7 @@ temperaturas_c = [(hour["temp"] - 32) * 5 / 9 for hour in hourly_data]
 
 # Função para criar gráfico simples
 def criar_grafico(x, y, titulo, ylabel, cor, nome_arquivo):
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(8.7, 3.5))
     plt.plot(x, y, marker='o', color=cor)
     plt.title(titulo)
     plt.xlabel("Hora do dia")
