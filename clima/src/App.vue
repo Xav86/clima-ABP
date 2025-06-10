@@ -5,10 +5,9 @@
 </template>
 
 <script>
-
 export default {
-  name: 'App'
-}
+  name: "App",
+};
 </script>
 
 <style>
@@ -19,9 +18,14 @@ export default {
 }
 
 :root {
-  --dark-blue: #121E3D;
-  --cool-white: #f2f2f2
+  --primary: #121e3d;
+  --secondary: #6e85c1;
+  --cool-white: #f2f2f2;
   --white: #fff;
 }
 
+.icon {
+  width: 35px;
+  height: 35px;
+}
 </style>
