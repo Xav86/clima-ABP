@@ -1,15 +1,11 @@
 <template>
   <div id="app">
-    <SideBar />
-    <!-- o resto da sua aplicação -->
+    <router-view />
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-  }
+  name: 'App'
 }
 </script>
