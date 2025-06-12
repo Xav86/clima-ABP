@@ -60,7 +60,7 @@
           </div>
           <div class="info-box">
             <img
-              src="@/assets/icons/icon _snowflake_.svg"
+              src="@/assets/icons/icon_snowflake.svg"
               alt="snow"
               class="icon"
             />
