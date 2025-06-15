@@ -9,7 +9,7 @@
       <div class="info-container">
         <div class="top-info">
           <div>
-            <h1>26ºC</h1>
+            <h1>{{ data.temp }}ºC</h1>
             <span class="secondary-color">Parcialmente Nublado</span>
           </div>
           <div>
@@ -87,6 +87,9 @@
 <script>
 export default {
   name: "ClimateBanner",
+  props: {
+    data: Object,
+  },
 };
 </script>
 
