@@ -1,0 +1,12 @@
+# Ambiente virtual
+venv
+
+
+# Arquivos temporários e backups
+*.log
+*.tmp
+*.bak
+
+# VS Code e outros editores
+.vscode/
+.idea/
