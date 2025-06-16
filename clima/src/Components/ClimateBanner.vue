@@ -10,11 +10,11 @@
         <div class="top-info">
           <div>
             <h1>{{ data.temp }}ºC</h1>
-            <span class="secondary-color">Parcialmente Nublado</span>
+            <span class="secondary-color">{{ data.description }}</span>
           </div>
           <div>
-            <h2>5:00AM</h2>
-            <span class="secondary-color">05/05/2025</span>
+            <h2>{{ data.time }}</h2>
+            <span class="secondary-color">{{ data.datetime }}</span>
           </div>
         </div>
         <div class="extra-info">
@@ -24,7 +24,7 @@
               alt="precipitation"
               class="icon"
             />
-            <span>0%</span>
+            <span>{{ data.precip }}%</span>
           </div>
           <div class="info-box">
             <img
@@ -32,7 +32,7 @@
               alt="wind-speed"
               class="icon"
             />
-            <span>6Km/h</span>
+            <span>{{ data.windspeed }}Km/h</span>
           </div>
           <div class="info-box">
             <img
@@ -40,7 +40,7 @@
               alt="clouds"
               class="icon"
             />
-            <span>46%</span>
+            <span>{{ data.cloudcover }}%</span>
           </div>
           <div class="info-box">
             <img
@@ -48,7 +48,7 @@
               alt="humidity"
               class="icon"
             />
-            <span>87%</span>
+            <span>{{ data.humidity }}%</span>
           </div>
           <div class="info-box">
             <img
@@ -56,7 +56,7 @@
               alt="sensation"
               class="icon"
             />
-            <span>14°C</span>
+            <span>{{ data.feelslike }}°C</span>
           </div>
           <div class="info-box">
             <img
@@ -64,7 +64,7 @@
               alt="snow"
               class="icon"
             />
-            <span>0mm</span>
+            <span>{{ data.snow }}mm</span>
           </div>
           <div class="info-box">
             <img
@@ -72,11 +72,11 @@
               alt="solar-energy"
               class="icon"
             />
-            <span>0MJ/m²</span>
+            <span>{{ data.solarenergy }}MJ/m²</span>
           </div>
           <div class="info-box">
             <img src="@/assets/icons/icon_UV.svg" alt="UV" class="icon" />
-            <span>0</span>
+            <span>{{ data.uvindex }}</span>
           </div>
         </div>
       </div>
