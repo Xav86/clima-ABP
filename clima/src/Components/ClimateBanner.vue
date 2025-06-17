@@ -3,7 +3,7 @@
     <div class="climate-box">
       <img
         class="climate-icon"
-        src="@/assets/icons/NoiteNublada.svg"
+        src="@/assets/icons/partly-cloudy-night.svg"
         alt="climate-icon"
       />
       <div class="info-container">
