@@ -2,10 +2,12 @@
   <div class="home">
     <NavBar />
     <ClimateBanner :data="data" />
+    <!-- <CardSimpleWeather :data="data" /> -->
   </div>
 </template>
 
 <script>
+// import CardSimpleWeather from "@/Components/Card/CardSimpleWeather.vue";
 import ClimateBanner from "@/Components/ClimateBanner.vue";
 import NavBar from "@/Components/NavBar/NavBar.vue";
 import axios from "axios";
@@ -16,6 +18,7 @@ export default {
   components: {
     NavBar,
     ClimateBanner,
+    // CardSimpleWeather,
   },
   async created() {
     try {
