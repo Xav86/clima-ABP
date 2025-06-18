@@ -1,11 +1,7 @@
 <template>
   <div class="banner-container">
     <div class="climate-box">
-      <img
-        class="climate-icon"
-        src="@/assets/icons/partly-cloudy-night.svg"
-        alt="climate-icon"
-      />
+      <img class="climate-icon" :src="data.icon" alt="climate-icon" />
       <div class="info-container">
         <div class="top-info">
           <div>

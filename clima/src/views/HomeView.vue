@@ -23,6 +23,7 @@ export default {
         "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Criciuma,BR?unitGroup=metric&lang=pt&key=DLP4WSNVQXB9XBY3A8RWXRZCR",
       );
 
+      this.data.icon = `/icons/${result.data.days[0].icon}.svg`;
       this.data.time = moment().format("LT");
       this.data.temp = result.data.days[0].temp;
       this.data.description = result.data.days[0].description;
@@ -44,9 +45,10 @@ export default {
   data() {
     return {
       data: {
-        time: "",
+        icon: "/icons/cloudy.svg",
+        time: "00:00",
         temp: 0,
-        description: "",
+        description: "-",
         datetime: "10/05/2005",
         precip: 0,
         windspeed: 0,
