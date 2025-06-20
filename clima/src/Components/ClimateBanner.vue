@@ -36,7 +36,7 @@ export default {
 <style scoped>
 h1,
 h2 {
-  background: -webkit-linear-gradient(var(--white), var(--secondary));
+  background: -webkit-linear-gradient(var(--w-white), var(--w-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -57,8 +57,8 @@ h2 {
 
   padding: 0 15rem;
 
-  background-color: var(--primary);
-  color: var(--cool-white);
+  background-color: var(--w-primary);
+  color: var(--w-cool-white);
   box-shadow: #63636333 0px 2px 8px 0px;
 }
 
@@ -89,6 +89,6 @@ h2 {
 }
 
 .secondary-color {
-  color: var(--secondary);
+  color: var(--w-secondary);
 }
 </style>

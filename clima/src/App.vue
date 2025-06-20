@@ -18,10 +18,12 @@ export default {
 }
 
 :root {
-  --primary: #121e3d;
-  --secondary: #6e85c1;
-  --cool-white: #f2f2f2;
-  --white: #fff;
+  --w-primary: #121e3d;
+  --w-secondary: #6e85c1;
+  --w-light-primary: #b7cbff;
+  --w-ligth-secondary: #296399;
+  --w-cool-white: #f2f2f2;
+  --w-white: #fff;
 }
 
 .icon {
