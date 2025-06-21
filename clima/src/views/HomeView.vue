@@ -3,6 +3,7 @@
     <NavBar />
     <ClimateBanner :data="data" />
     <CardSimpleWeather :data="data" />
+    <DayCard :data="data" />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import CardSimpleWeather from "@/Components/Card/CardSimpleWeather.vue";
 import ClimateBanner from "@/Components/ClimateBanner.vue";
 import NavBar from "@/Components/NavBar/NavBar.vue";
+import DayCard from "@/Components/DayCard/DayCard.vue";
 import axios from "axios";
 import moment from "moment";
 
@@ -19,6 +21,7 @@ export default {
     NavBar,
     ClimateBanner,
     CardSimpleWeather,
+    DayCard,
   },
   async created() {
     try {
