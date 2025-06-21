@@ -43,7 +43,7 @@ export default {
     font-family: "Segoe UI", sans-serif;
     color: #2b3a4a;
     width: 70%;
-    margin: auto;
+    margin: 0 auto 24px auto;
     border: 1px solid #89A5D7
 }
 

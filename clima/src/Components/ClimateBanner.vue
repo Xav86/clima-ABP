@@ -6,7 +6,7 @@
         <div class="top-info">
           <div>
             <h1>{{ data.temp }}ºC</h1>
-            <span class="secondary-color">{{ data.description }}</span>
+            <span class="secondary-color">{{ data.conditions }}</span>
           </div>
           <div>
             <h2>{{ data.time }}</h2>
