@@ -3,14 +3,20 @@
     <div class="climate-box">
       <img class="climate-icon" :src="data.icon" alt="climate-icon" />
       <div class="info-container">
-        <div class="top-info">
-          <div>
-            <h1>{{ data.temp }}ºC</h1>
-            <span class="secondary-color">{{ data.conditions }}</span>
+        <div class="basic-info">
+          <div class="top-info">
+            <div>
+              <h1>{{ data.temp }}ºC</h1>
+              <span class="secondary-color">{{ data.conditions }}</span>
+            </div>
+            <div>
+              <h2>{{ data.time }}</h2>
+              <span class="secondary-color">{{ data.datetime }}</span>
+            </div>
           </div>
-          <div>
-            <h2>{{ data.time }}</h2>
-            <span class="secondary-color">{{ data.datetime }}</span>
+          <div class="d-flex gap-3">
+            <h3>Max: {{ data.tempmax }}</h3>
+            <h3>Min: {{ data.tempmin }}</h3>
           </div>
         </div>
         <IconList :data="data" />
@@ -47,6 +53,12 @@ h1 {
 h2 {
   font-size: 32px;
 }
+h3 {
+  color: var(--w-secondary);
+}
+span {
+  font-size: 20px;
+}
 
 .banner-container {
   width: 100%;
@@ -55,18 +67,17 @@ h2 {
   justify-content: center;
   align-items: center;
 
-  padding: 0 15rem;
-
   background-color: var(--w-primary);
   color: var(--w-cool-white);
   box-shadow: #63636333 0px 2px 8px 0px;
 }
 
 .climate-box {
-  width: 100%;
+  width: 65%;
   display: flex;
 
   gap: 10px;
+  margin: 0 auto;
 }
 
 .info-container {
@@ -74,6 +85,14 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.basic-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
 }
 
 .top-info {

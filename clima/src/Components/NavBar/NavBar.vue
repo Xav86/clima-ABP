@@ -1,44 +1,48 @@
 <template>
   <nav class="navbar">
     <div class="navbar__logo">
-        <img src="@\assets\icons\logo.png" alt="">
+      <img src="@\assets\icons\logo.png" alt="" />
     </div>
     <div class="navright">
-        <div class="navbar__search">
-            <input
-                type="text"
-                v-model="searchQuery"
-                placeholder="Localizar"
-                class="search-input"
-            />
-            <button @click="handleSave" class="save-button">Salvar</button>
-        </div>
-        <ul class="navbar__links">
+      <div class="navbar__search">
+        <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Localizar"
+          class="search-input"
+        />
+        <button @click="handleSave" class="save-button">Salvar</button>
+      </div>
+      <ul class="navbar__links">
         <li><a href="#">Favoritos</a></li>
         <li><a href="#">Sobre nós</a></li>
-        </ul>
-        <div class="navbar__settings">
-            <img class="gear-icon" src="@/assets/icons/gear.png" alt="Configurações" />
-        </div>
-    </div>  
+      </ul>
+      <div class="navbar__settings">
+        <img
+          class="gear-icon"
+          src="@/assets/icons/gear.png"
+          alt="Configurações"
+        />
+      </div>
+    </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   data() {
     return {
-      searchQuery: ''
-    }
+      searchQuery: "",
+    };
   },
   methods: {
     handleSave() {
-      console.log('Busca salva:', this.searchQuery)
-      this.$emit('search', this.searchQuery)
-    }
-  }
-}
+      console.log("Busca salva:", this.searchQuery);
+      this.$emit("search", this.searchQuery);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -49,6 +53,9 @@ export default {
   padding: 12px 24px;
   background-color: #fff;
   border-bottom: 2px solid #e5e7eb;
+
+  position: sticky;
+  top: 0;
 }
 
 .navbar__logo {
@@ -99,7 +106,7 @@ export default {
 }
 
 .save-button {
-  background-color: #1E293B99;
+  background-color: #1e293b99;
   color: #fff;
   border: none;
   border-radius: 6px;

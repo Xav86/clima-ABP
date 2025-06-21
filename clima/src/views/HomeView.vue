@@ -1,14 +1,15 @@
 <template>
   <div class="home">
     <NavBar />
+    <div class="title-box">
+      <h1>Previsão do tempo de: {{ city }}</h1>
+    </div>
     <ClimateBanner :data="data" />
-    <CardSimpleWeather :data="data" />
     <DayCard v-for="(day, idx) in weekData" :key="idx" :data="day" />
   </div>
 </template>
 
 <script>
-import CardSimpleWeather from "@/Components/Card/CardSimpleWeather.vue";
 import ClimateBanner from "@/Components/ClimateBanner.vue";
 import NavBar from "@/Components/NavBar/NavBar.vue";
 import DayCard from "@/Components/DayCard/DayCard.vue";
@@ -20,13 +21,12 @@ export default {
   components: {
     NavBar,
     ClimateBanner,
-    CardSimpleWeather,
     DayCard,
   },
   async created() {
     try {
       const result = await axios.get(
-        "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Criciuma,BR?unitGroup=metric&lang=pt&key=DLP4WSNVQXB9XBY3A8RWXRZCR",
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.city},BR?unitGroup=metric&lang=pt&key=DLP4WSNVQXB9XBY3A8RWXRZCR`,
       );
 
       // Preenche o array weekData com os 7 primeiros dias
@@ -51,6 +51,8 @@ export default {
         icon: `/icons/${result.data.days[0].icon}.svg`,
         time: moment().format("LT"),
         temp: result.data.days[0].temp,
+        tempmax: result.data.days[0].tempmax,
+        tempmin: result.data.days[0].tempmin,
         description: result.data.days[0].description,
         conditions: result.data.days[0].conditions,
         datetime: moment(result.data.days[0].datetime).format("DD/MM/YYYY"),
@@ -69,10 +71,13 @@ export default {
   },
   data() {
     return {
+      city: "Criciuma",
       data: {
         icon: "/icons/cloudy.svg",
         time: "00:00",
         temp: 0,
+        tempmax: 0,
+        tempmin: 0,
         description: "-",
         datetime: "10/05/2005",
         precip: 0,
@@ -91,6 +96,21 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin: 0;
+
+  color: var(--w-primary);
+  font-size: 60px;
+}
+
+.title-box {
+  width: 70%;
+  display: flex;
+
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
 .home {
   width: 100%;
   min-height: 100vh;
