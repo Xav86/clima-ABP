@@ -5,7 +5,12 @@
       <h1>Previsão do tempo de: {{ city }}</h1>
     </div>
     <ClimateBanner :data="data" />
-    <DayCard v-for="(day, idx) in weekData" :key="idx" :data="day" />
+    <div class="week-list">
+      <div class="title-box">
+        <h2>Previsões da semana</h2>
+      </div>
+      <DayCard v-for="(day, i) in weekData" :key="`${i}-${day}`" :data="day" />
+    </div>
   </div>
 </template>
 
@@ -29,11 +34,12 @@ export default {
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.city},BR?unitGroup=metric&lang=pt&key=DLP4WSNVQXB9XBY3A8RWXRZCR`,
       );
 
-      // Preenche o array weekData com os 7 primeiros dias
       this.weekData = result.data.days.slice(0, 7).map((day) => ({
         icon: `/icons/${day.icon}.svg`,
         time: moment().format("LT"),
         temp: day.temp,
+        tempmax: day.tempmax,
+        tempmin: day.tempmin,
         description: day.description,
         conditions: day.conditions,
         datetime: moment(day.datetime).format("DD/MM/YYYY"),
@@ -47,24 +53,24 @@ export default {
         uvindex: day.uvindex,
       }));
 
-      this.data = {
-        icon: `/icons/${result.data.days[0].icon}.svg`,
-        time: moment().format("LT"),
-        temp: result.data.days[0].temp,
-        tempmax: result.data.days[0].tempmax,
-        tempmin: result.data.days[0].tempmin,
-        description: result.data.days[0].description,
-        conditions: result.data.days[0].conditions,
-        datetime: moment(result.data.days[0].datetime).format("DD/MM/YYYY"),
-        precip: result.data.days[0].precip,
-        windspeed: result.data.days[0].windspeed,
-        cloudcover: result.data.days[0].cloudcover,
-        humidity: result.data.days[0].humidity,
-        feelslike: result.data.days[0].feelslike,
-        snow: result.data.days[0].snow,
-        solarenergy: result.data.days[0].solarenergy,
-        uvindex: result.data.days[0].uvindex,
-      };
+      this.data.icon = `/icons/${result.data.days[0].icon}.svg`;
+      this.data.time = moment().format("LT");
+      this.data.temp = result.data.days[0].temp;
+      this.data.tempmax = result.data.days[0].tempmax;
+      this.data.tempmin = result.data.days[0].tempmin;
+      this.data.description = result.data.days[0].description;
+      this.data.datetime = moment(result.data.days[0].datetime).format(
+        "DD/MM/YYYY",
+      );
+      this.data.precip = result.data.days[0].precip;
+      this.data.windspeed = result.data.days[0].windspeed;
+      this.data.cloudcover = result.data.days[0].cloudcover;
+      this.data.humidity = result.data.days[0].humidity;
+      this.data.feelslike = result.data.days[0].feelslike;
+      this.data.snow = result.data.days[0].snow;
+      this.data.solarenergy = result.data.days[0].solarenergy;
+      this.data.uvindex = result.data.days[0].uvindex;
+      this.data.hours = result.data.days[0].hours;
     } catch (error) {
       console.error(error);
     }
@@ -76,8 +82,6 @@ export default {
         icon: "/icons/cloudy.svg",
         time: "00:00",
         temp: 0,
-        tempmax: 0,
-        tempmin: 0,
         description: "-",
         datetime: "10/05/2005",
         precip: 0,
@@ -88,8 +92,9 @@ export default {
         snow: 0,
         solarenergy: 0,
         uvindex: 0,
+        hours: [],
       },
-      weekData: [], // novo array para os 7 dias
+      weekData: [],
     };
   },
 };
@@ -116,5 +121,14 @@ h1 {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.week-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+  padding-top: 14px;
 }
 </style>

@@ -1,25 +1,31 @@
 <template>
   <div class="banner-container">
     <div class="climate-box">
-      <img class="climate-icon" :src="data.icon" alt="climate-icon" />
+      <img
+        class="climate-icon"
+        :src="data.icon ? `${currentWeather.icon}` : '/icons/cloudy.svg'"
+        alt="climate-icon"
+      />
       <div class="info-container">
         <div class="basic-info">
           <div class="top-info">
             <div>
-              <h1>{{ data.temp }}ºC</h1>
-              <span class="secondary-color">{{ data.conditions }}</span>
+              <h1>{{ currentWeather.temp }}ºC</h1>
+              <span class="secondary-color">{{
+                currentWeather.conditions
+              }}</span>
             </div>
             <div>
-              <h2>{{ data.time }}</h2>
-              <span class="secondary-color">{{ data.datetime }}</span>
+              <h2>{{ currentWeather.time }}</h2>
+              <span class="secondary-color">{{ currentWeather.datetime }}</span>
             </div>
           </div>
           <div class="d-flex gap-3">
-            <h3>Max: {{ data.tempmax }}</h3>
-            <h3>Min: {{ data.tempmin }}</h3>
+            <h3>Max: {{ currentWeather.tempmax }}</h3>
+            <h3>Min: {{ currentWeather.tempmin }}</h3>
           </div>
         </div>
-        <IconList :data="data" />
+        <IconList :data="currentWeather" />
       </div>
     </div>
   </div>
@@ -27,6 +33,7 @@
 
 <script>
 import IconList from "./List/IconList.vue";
+import moment from "moment";
 
 export default {
   name: "ClimateBanner",
@@ -35,6 +42,41 @@ export default {
   },
   components: {
     IconList,
+  },
+  computed: {
+    currentWeather() {
+      if (!this.data || typeof this.data !== "object") return null;
+      if (!Array.isArray(this.data.hours)) return this.data;
+
+      const now = moment();
+      const closestHour = this.data.hours.reduce((closest, hour) => {
+        const hourMoment = moment(hour.datetime, "HH:mm:ss");
+        const diff = Math.abs(now.diff(hourMoment, "minutes"));
+
+        const closestDiff = Math.abs(
+          now.diff(moment(closest.datetime, "HH:mm:ss"), "minutes"),
+        );
+
+        return diff < closestDiff ? hour : closest;
+      }, this.data.hours[0]);
+
+      return {
+        ...this.data,
+
+        icon: `/icons/${closestHour.icon || this.data.icon}.svg`,
+        temp: closestHour.temp ?? this.data.temp,
+        feelslike: closestHour.feelslike ?? this.data.feelslike,
+        conditions: closestHour.conditions ?? this.data.conditions,
+        windspeed: closestHour.windspeed ?? this.data.windspeed,
+        humidity: closestHour.humidity ?? this.data.humidity,
+        cloudcover: closestHour.cloudcover ?? this.data.cloudcover,
+        precip: closestHour.precip ?? this.data.precip,
+        uvindex: closestHour.uvindex ?? this.data.uvindex,
+        snow: closestHour.snow ?? this.data.snow,
+        solarenergy: closestHour.solarenergy ?? this.data.solarenergy,
+        time: moment().format("LT"),
+      };
+    },
   },
 };
 </script>
