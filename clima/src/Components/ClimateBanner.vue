@@ -46,9 +46,11 @@ export default {
   computed: {
     currentWeather() {
       if (!this.data || typeof this.data !== "object") return null;
-      if (!Array.isArray(this.data.hours)) return this.data;
+      if (!Array.isArray(this.data.hours) || !this.data.hours.length)
+        return this.data;
 
       const now = moment();
+
       const closestHour = this.data.hours.reduce((closest, hour) => {
         const hourMoment = moment(hour.datetime, "HH:mm:ss");
         const diff = Math.abs(now.diff(hourMoment, "minutes"));
@@ -62,7 +64,6 @@ export default {
 
       return {
         ...this.data,
-
         icon: `/icons/${closestHour.icon || this.data.icon}.svg`,
         temp: closestHour.temp ?? this.data.temp,
         feelslike: closestHour.feelslike ?? this.data.feelslike,

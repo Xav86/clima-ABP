@@ -1,7 +1,7 @@
 <template>
   <div class="daycard">
     <div class="daycard-logo">
-      <img :src="data.icon" alt="" />
+      <img :src="data.icon" alt="icon_weather" />
     </div>
 
     <div class="daycard-primary">
@@ -30,32 +30,33 @@ export default {
 
 <style scoped>
 .daycard {
-  display: flex;
-  background: #f0f4fa;
-  padding: 16px 24px;
-  justify-content: space-between;
-  gap: 40px;
-  align-items: center;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  font-family: "Segoe UI", sans-serif;
-  color: #2b3a4a;
-  margin: 0 auto;
   width: 70%;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+
+  gap: 40px;
+  padding: 16px 24px;
+  margin: 0 auto;
+
+  color: #2b3a4a;
+  background: #f0f4fa;
   border: 1px solid #89a5d7;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px #0000000d;
 }
 
 .daycard-primary {
+  width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 16px;
 }
 
 .daycard-logo {
-  margin-bottom: 12px;
+  width: 150px;
+  height: 100px;
   display: flex;
   justify-content: center;
-  height: 100px;
 }
 </style>

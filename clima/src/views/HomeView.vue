@@ -129,6 +129,6 @@ h1 {
   flex-direction: column;
 
   gap: 14px;
-  padding-top: 14px;
+  padding: 14px 0;
 }
 </style>
