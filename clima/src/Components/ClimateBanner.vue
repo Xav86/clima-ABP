@@ -1,5 +1,11 @@
 <template>
-  <div class="banner-container">
+  <div
+    :class="
+      isDay
+        ? 'banner-container-day banner-container'
+        : 'banner-container-night banner-container'
+    "
+  >
     <div class="climate-box">
       <img
         class="climate-icon"
@@ -10,19 +16,29 @@
         <div class="basic-info">
           <div class="top-info">
             <div>
-              <h1>{{ currentWeather.temp }}ºC</h1>
-              <span class="secondary-color">{{
+              <h1 :class="isDay ? 'transition-day' : 'transition-night'">
+                {{ currentWeather.temp }}ºC
+              </h1>
+              <span :class="isDay ? 'color-day' : 'color-night'">{{
                 currentWeather.conditions
               }}</span>
             </div>
             <div>
-              <h2>{{ currentWeather.time }}</h2>
-              <span class="secondary-color">{{ currentWeather.datetime }}</span>
+              <h2 :class="isDay ? 'transition-day' : 'transition-night'">
+                {{ currentWeather.time }}
+              </h2>
+              <span :class="isDay ? 'color-day' : 'color-night'">{{
+                currentWeather.datetime
+              }}</span>
             </div>
           </div>
           <div class="d-flex gap-3">
-            <h3>Max: {{ currentWeather.tempmax }}</h3>
-            <h3>Min: {{ currentWeather.tempmin }}</h3>
+            <h3 :class="isDay ? 'color-day' : 'color-night'">
+              Max: {{ currentWeather.tempmax }}
+            </h3>
+            <h3 :class="isDay ? 'color-day' : 'color-night'">
+              Min: {{ currentWeather.tempmin }}
+            </h3>
           </div>
         </div>
         <IconList :data="currentWeather" />
@@ -36,12 +52,22 @@ import IconList from "./List/IconList.vue";
 import moment from "moment";
 
 export default {
+  created() {
+    const hour = moment().hour();
+    if (hour >= 6 && hour < 18) this.isDay = true;
+    else this.isDay = false;
+  },
   name: "ClimateBanner",
   props: {
     data: Object,
   },
   components: {
     IconList,
+  },
+  data() {
+    return {
+      isDay: true,
+    };
   },
   computed: {
     currentWeather() {
@@ -83,9 +109,16 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
+.transition-night {
   background: -webkit-linear-gradient(var(--w-white), var(--w-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.transition-day {
+  background: -webkit-linear-gradient(
+    var(--w-secondary),
+    var(--w-ligth-secondary)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -96,11 +129,15 @@ h1 {
 h2 {
   font-size: 32px;
 }
-h3 {
-  color: var(--w-secondary);
-}
 span {
   font-size: 20px;
+}
+
+.color-night {
+  color: var(--w-secondary);
+}
+.color-day {
+  color: var(--w-ligth-secondary);
 }
 
 .banner-container {
@@ -110,9 +147,17 @@ span {
   justify-content: center;
   align-items: center;
 
+  box-shadow: #63636333 0px 2px 8px 0px;
+}
+
+.banner-container-night {
   background-color: var(--w-primary);
   color: var(--w-cool-white);
-  box-shadow: #63636333 0px 2px 8px 0px;
+}
+
+.banner-container-day {
+  background-color: var(--w-light-primary);
+  color: var(--w-ligth-secondary);
 }
 
 .climate-box {
@@ -148,9 +193,5 @@ span {
 .climate-icon {
   max-width: 250px;
   max-height: 250px;
-}
-
-.secondary-color {
-  color: var(--w-secondary);
 }
 </style>

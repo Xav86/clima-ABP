@@ -4,7 +4,7 @@
       <img src="@\assets\icons\logo.png" alt="" />
     </div>
     <div class="navright">
-      <div class="navbar__search">
+      <!-- <div class="navbar__search">
         <input
           type="text"
           v-model="searchQuery"
@@ -12,7 +12,7 @@
           class="search-input"
         />
         <button @click="handleSave" class="save-button">Salvar</button>
-      </div>
+      </div> -->
       <ul class="navbar__links">
         <li><a href="#">Favoritos</a></li>
         <li><a href="#">Sobre nós</a></li>
