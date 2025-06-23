@@ -1,20 +1,22 @@
 <template>
-  <div class="home">
-    <NavBar />
-    <div class="title-box">
-      <h1>Previsão do tempo de: {{ city }}</h1>
-    </div>
-    <ClimateBanner :data="data" />
-    <div>
+  <div>
+    <div class="home">
+      <NavBar />
       <div class="title-box">
-        <h2>Previsões da semana</h2>
+        <h1>Previsão do tempo de: {{ city }}</h1>
       </div>
-      <div class="week-list">
-        <DayCard
-          v-for="(day, i) in weekData"
-          :key="`${i}-${day}`"
-          :data="day"
-        />
+      <ClimateBanner :data="data" />
+      <div>
+        <div class="title-box">
+          <h2>Previsões da semana</h2>
+        </div>
+        <div class="week-list">
+          <DayCard
+            v-for="(day, i) in weekData"
+            :key="`${i}-${day}`"
+            :data="day"
+          />
+        </div>
       </div>
     </div>
     <FooterItem />

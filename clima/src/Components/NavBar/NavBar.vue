@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar">
-    <div class="navbar__logo">
+    <router-link to="/" class="navbar__logo">
       <img src="@\assets\icons\logo.png" alt="" />
-    </div>
+    </router-link>
     <div class="navright">
-      <!-- <div class="navbar__search">
+      <div v-if="false" class="navbar__search">
         <input
           type="text"
           v-model="searchQuery"
@@ -12,18 +12,17 @@
           class="search-input"
         />
         <button @click="handleSave" class="save-button">Salvar</button>
-      </div> -->
+      </div>
       <ul class="navbar__links">
-        <li><a href="#">Favoritos</a></li>
-        <li><a href="#">Sobre nós</a></li>
+        <li><router-link to="/about">Sobre nós</router-link></li>
       </ul>
-      <div class="navbar__settings">
+      <router-link to="/configuration" class="navbar__settings">
         <img
           class="gear-icon"
           src="@/assets/icons/gear.png"
           alt="Configurações"
         />
-      </div>
+      </router-link>
     </div>
   </nav>
 </template>
