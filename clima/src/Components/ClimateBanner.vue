@@ -67,6 +67,7 @@ export default {
   data() {
     return {
       isDay: true,
+      currentTime: moment().format("LT"),
     };
   },
   computed: {
@@ -101,9 +102,21 @@ export default {
         uvindex: closestHour.uvindex ?? this.data.uvindex,
         snow: closestHour.snow ?? this.data.snow,
         solarenergy: closestHour.solarenergy ?? this.data.solarenergy,
-        time: moment().format("LT"),
+        time: this.currentTime,
       };
     },
+  },
+  methods: {
+    updateTime() {
+      this.currentTime = moment().format("LT");
+    },
+  },
+  mounted() {
+    this.updateTime();
+    this.interval = setInterval(this.updateTime, 60000);
+  },
+  beforeUnmount() {
+    clearInterval(this.interval);
   },
 };
 </script>
