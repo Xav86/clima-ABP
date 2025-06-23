@@ -6,7 +6,9 @@
         <div class="title-box">
           <h1>Alterar Região</h1>
         </div>
-        <hr style="width: 50%; border: 1px solid var(--w-primary)" />
+        <hr
+          style="width: 50%; border: 1px solid var(--w-primary); z-index: -1"
+        />
         <div class="list-itens">
           <div
             class="form-check"
@@ -66,7 +68,7 @@ export default {
         { label: "Jaguaruna", value: "Jaguaruna" },
         { label: "Sangão", value: "Sangao" },
         { label: "Treviso", value: "Treviso" },
-        { label: "Forquilhinha", value: "Forquilinha" },
+        { label: "Forquilhinha", value: "Forquilhinha" },
         { label: "Araranguá", value: "Ararangua" },
         { label: "Tubarão", value: "Tubarao" },
       ],
@@ -76,6 +78,15 @@ export default {
   methods: {
     alterLocation() {
       localStorage.setItem("location-selected", this.selectedLocation);
+
+      const selectedCity = this.locations.find(
+        (loc) => loc.value === this.selectedLocation,
+      );
+
+      if (selectedCity) {
+        localStorage.setItem("location-name", selectedCity.label);
+      }
+
       alert("Localização alterada");
       this.$router.push("/");
     },

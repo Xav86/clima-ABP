@@ -3,7 +3,7 @@
     <div class="home">
       <NavBar />
       <div class="title-box">
-        <h1>Previsão do tempo de: {{ city }}</h1>
+        <h1>Previsão do tempo de: {{ cityName }}</h1>
       </div>
       <ClimateBanner :data="data" />
       <div>
@@ -44,8 +44,10 @@ export default {
   async created() {
     try {
       const city = localStorage.getItem("location-selected");
+      const cityName = localStorage.getItem("location-name");
 
       if (city) this.city = city;
+      if (cityName) this.cityName = cityName;
 
       const result = await axios.get(
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.city},BR?unitGroup=metric&lang=pt&key=DLP4WSNVQXB9XBY3A8RWXRZCR`,
@@ -96,6 +98,7 @@ export default {
   data() {
     return {
       city: "Criciuma",
+      cityName: "Criciúma",
       data: {
         icon: "/icons/cloudy.svg",
         time: "00:00",
