@@ -62,7 +62,7 @@ h3 {
 }
 
 .daycard-primary {
-  width: 170px;
+  width: 190px;
   display: flex;
   flex-direction: column;
   justify-content: center;

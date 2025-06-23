@@ -43,6 +43,10 @@ export default {
   },
   async created() {
     try {
+      const city = localStorage.getItem("location-selected");
+
+      if (city) this.city = city;
+
       const result = await axios.get(
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.city},BR?unitGroup=metric&lang=pt&key=DLP4WSNVQXB9XBY3A8RWXRZCR`,
       );
