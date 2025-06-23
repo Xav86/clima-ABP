@@ -1,16 +1,21 @@
 <template>
-  <div class="daycard">
-    <div class="daycard-logo">
-      <img :src="data.icon" alt="icon_weather" />
+  <div>
+    <div class="day">
+      <h3>{{ data.weekday }}</h3>
     </div>
-
-    <div class="daycard-primary">
-      <h1 class="daycard-temp">{{ data.temp }}ºC</h1>
-      <span>
-        {{ data.datetime }}
-      </span>
+    <div class="daycard">
+      <div class="daycard-logo">
+        <img :src="data.icon" alt="icon_weather" />
+      </div>
+      <div class="daycard-primary">
+        <h1 class="daycard-temp transition-day">{{ data.temp }}ºC</h1>
+        <h5>&uArr; {{ data.tempmax }} / {{ data.tempmin }} &dArr;</h5>
+        <span>
+          {{ data.datetime }}
+        </span>
+      </div>
+      <IconList :data="data" />
     </div>
-    <IconList :data="data" />
   </div>
 </template>
 
@@ -29,6 +34,16 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+  color: var(--w-ligth-secondary);
+}
+
+.day {
+  width: 70%;
+
+  margin: 0 auto;
+}
+
 .daycard {
   width: 70%;
   display: flex;
@@ -47,10 +62,21 @@ export default {
 }
 
 .daycard-primary {
-  width: 150px;
+  width: 170px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  color: var(--w-ligth-secondary);
+}
+
+.transition-day {
+  background: -webkit-linear-gradient(
+    var(--w-secondary),
+    var(--w-ligth-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .daycard-logo {

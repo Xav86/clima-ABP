@@ -5,12 +5,19 @@
       <h1>Previsão do tempo de: {{ city }}</h1>
     </div>
     <ClimateBanner :data="data" />
-    <div class="week-list">
+    <div>
       <div class="title-box">
         <h2>Previsões da semana</h2>
       </div>
-      <DayCard v-for="(day, i) in weekData" :key="`${i}-${day}`" :data="day" />
+      <div class="week-list">
+        <DayCard
+          v-for="(day, i) in weekData"
+          :key="`${i}-${day}`"
+          :data="day"
+        />
+      </div>
     </div>
+    <FooterItem />
   </div>
 </template>
 
@@ -20,6 +27,9 @@ import NavBar from "@/Components/NavBar/NavBar.vue";
 import DayCard from "@/Components/DayCard/DayCard.vue";
 import axios from "axios";
 import moment from "moment";
+import "moment/locale/pt-br";
+import FooterItem from "@/Components/FooterItem.vue";
+moment.locale("pt-br");
 
 export default {
   name: "HomeView",
@@ -27,6 +37,7 @@ export default {
     NavBar,
     ClimateBanner,
     DayCard,
+    FooterItem,
   },
   async created() {
     try {
@@ -42,6 +53,7 @@ export default {
         tempmin: day.tempmin,
         description: day.description,
         conditions: day.conditions,
+        weekday: moment(day.datetime).format("dddd"),
         datetime: moment(day.datetime).format("DD/MM/YYYY"),
         precip: day.precip,
         windspeed: day.windspeed,
@@ -112,7 +124,7 @@ h1 {
   width: 70%;
   display: flex;
 
-  padding: 10px 20px;
+  padding: 10px 0;
   margin: 0 auto;
 }
 
@@ -128,7 +140,7 @@ h1 {
   display: flex;
   flex-direction: column;
 
-  gap: 14px;
-  padding: 14px 0;
+  gap: 22px;
+  padding: 0 0 14px 0;
 }
 </style>
