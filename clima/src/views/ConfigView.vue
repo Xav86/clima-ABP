@@ -30,7 +30,7 @@
         </div>
         <div class="button-box">
           <button class="btn btn-primary btn-color" @click="alterLocation">
-            Slavar
+            Salvar
           </button>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default {
         localStorage.setItem("location-name", selectedCity.label);
       }
 
-      alert("Localização alterada");
+      // alert("Localização alterada");
       this.$router.push("/");
     },
   },
